@@ -1,0 +1,9 @@
+.popup__title_type_image {
+    justify-self: left;
+    grid-area: title;
+    color: #fff;
+    font-size: 12px;
+    line-height: 14.52px;
+    font-weight: 400;
+    margin: 0;
+}

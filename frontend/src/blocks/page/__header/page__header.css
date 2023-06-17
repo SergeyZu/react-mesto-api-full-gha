@@ -1,0 +1,22 @@
+.page__header {
+  max-width: 880px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto 0;
+  padding: 45px 0 41px;
+}
+
+@media screen and (max-width: 980px) {
+  .page__header {
+    max-width: 980px;
+    padding: 45px 50px 41px;
+  }
+}
+
+@media screen and (max-width: 542px) {
+  .page__header {
+    min-height: 56px;
+    margin: 28px 0 0;
+    padding: 0 27px;
+  }
+}

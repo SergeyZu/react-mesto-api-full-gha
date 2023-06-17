@@ -1,0 +1,8 @@
+.popup__input_type_about {
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
