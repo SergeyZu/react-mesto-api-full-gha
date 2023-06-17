@@ -1,9 +1,0 @@
-.popup__delete-card-content {
-    min-height: 181px;
-}
-
-@media screen and (max-width: 650px) {
-    .popup__delete-card-content {
-        min-height: 150px;
-    }
-}
