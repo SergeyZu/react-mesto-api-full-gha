@@ -1,0 +1,9 @@
+.page__cards {
+    margin: 51px auto 0;
+}
+
+@media screen and (max-width: 650px) {
+    .page__cards {
+        margin: 26px auto 0;
+    }
+}

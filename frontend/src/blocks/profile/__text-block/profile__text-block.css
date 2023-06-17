@@ -1,0 +1,19 @@
+.profile__text-block {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr min-content;
+    grid-template-rows: min-content min-content;
+    column-gap: 18px;
+    row-gap: 10px;
+    grid-template-areas:
+        "title edit-button"
+        "subtitle subtitle";
+}
+
+@media screen and (max-width: 650px) {
+    .profile__text-block {
+        column-gap: 9px;
+        row-gap: 8px;
+        justify-items: center;
+    }
+}

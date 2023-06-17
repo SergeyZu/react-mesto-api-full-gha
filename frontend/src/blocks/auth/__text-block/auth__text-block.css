@@ -1,0 +1,10 @@
+.auth__text-block {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  margin-top: 15px;
+}
