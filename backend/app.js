@@ -8,7 +8,7 @@ const rateLimit = require('express-rate-limit');
 const { handleErrors } = require('./src/middlewares/handleErrors');
 const router = require('./src/routes');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 
 const app = express();
 
