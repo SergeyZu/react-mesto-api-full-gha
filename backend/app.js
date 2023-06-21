@@ -8,6 +8,7 @@ const cors = require('cors');
 
 const { handleErrors } = require('./src/middlewares/handleErrors');
 const router = require('./src/routes');
+const { requestLogger, errorLogger } = require('./src/middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 
@@ -40,7 +41,11 @@ app.use(express.json());
 
 app.use(limiter);
 
+app.use(requestLogger);
+
 app.use(router);
+
+app.use(errorLogger);
 
 app.use(errors());
 
