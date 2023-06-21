@@ -1,9 +1,0 @@
-.popup__container_low-form {
-    grid-template-rows: 32px 181px;
-}
-
-@media screen and (max-width: 650px) {
-    .popup__container_low-form {
-        grid-template-rows: 20px 181px;
-    }
-}

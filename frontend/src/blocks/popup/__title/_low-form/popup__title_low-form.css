@@ -1,9 +1,0 @@
-.popup__title_low-form {
-    margin-bottom: 12px;
-}
-
-@media screen and (max-width: 650px) {
-    .popup__title_low-form {
-        margin-bottom: 12px;
-    }
-}
