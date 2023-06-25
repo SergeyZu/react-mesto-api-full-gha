@@ -25,7 +25,7 @@ class Api {
   // Запрос на изменение данных пользователя
   setUserData(inputValues) {
     return this._request(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify(inputValues),
     });
@@ -41,7 +41,7 @@ class Api {
   // Запрос на добавление карточки
   addCard(data) {
     return this._request(`${this._baseUrl}/cards`, {
-      method: "POST",
+      method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
         name: data.name,
@@ -53,7 +53,7 @@ class Api {
   // Запрос на удаление карточки
   deleteCard(cardId) {
     return this._request(`${this._baseUrl}/cards/${cardId}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: this._headers,
     });
   }
@@ -61,7 +61,7 @@ class Api {
   // Запрос на постановку лайка
   setLike(cardId) {
     return this._request(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: "PUT",
+      method: 'PUT',
       headers: this._headers,
     });
   }
@@ -69,7 +69,7 @@ class Api {
   // Запрос на снятие лайка:
   removeLike(cardId) {
     return this._request(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: this._headers,
     });
   }
@@ -77,7 +77,7 @@ class Api {
   // Запрос на обновление аватара
   changeAvatar(avatar) {
     return this._request(`${this._baseUrl}/users/me/avatar`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         avatar: avatar,
@@ -87,12 +87,20 @@ class Api {
 }
 
 const apiConfig = {
-  baseUrl: "https://nomoreparties.co/v1/cohort-61",
+  baseUrl: 'http://localhost:3000',
   headers: {
-    authorization: "e4cf1203-298c-4ad3-b815-4ccead265bb8",
-    "Content-Type": "application/json",
+    authorization: `Bearer ${localStorage.getItem('token')}`,
+    'Content-Type': 'application/json',
   },
 };
+
+// const apiConfig = {
+//   baseUrl: "https://nomoreparties.co/v1/cohort-61",
+//   headers: {
+//     authorization: "e4cf1203-298c-4ad3-b815-4ccead265bb8",
+//     "Content-Type": "application/json",
+//   },
+// };
 
 const api = new Api(apiConfig);
 

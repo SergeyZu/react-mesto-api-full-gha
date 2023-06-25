@@ -1,6 +1,8 @@
 // const BASE_URL = 'http://104.131.160.75:3000';
 
-const BASE_URL = 'https://auth.nomoreparties.co';
+// const BASE_URL = 'https://auth.nomoreparties.co';
+
+const BASE_URL = 'http://localhost:3000';
 
 const makeRequest = (url, method, body, token) => {
   const options = {
@@ -13,6 +15,8 @@ const makeRequest = (url, method, body, token) => {
   if (body) {
     options.body = JSON.stringify(body);
   }
+
+  // const token = localStorage.getItem('token');
 
   if (token) {
     options.headers.Authorization = `Bearer ${token}`;
