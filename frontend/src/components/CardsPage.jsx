@@ -31,7 +31,7 @@ function CardsPage({ logOut, email }) {
     api
       .getInitialCards()
       .then((cards) => {
-        setCards(cards);
+        setCards(cards.reverse());
       })
       .catch((err) => {
         console.log(err);
@@ -145,7 +145,7 @@ function CardsPage({ logOut, email }) {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="page">
+      <div className='page'>
         <Header onClick={logOut} buttonText={'Выйти'}>
           {email}
         </Header>
@@ -179,7 +179,7 @@ function CardsPage({ logOut, email }) {
           onAddPlace={handleAddPlaceSubmit}
         />
 
-        <PopupWithForm name="delete-card" title="Вы уверены?" btnText="Да" />
+        <PopupWithForm name='delete-card' title='Вы уверены?' btnText='Да' />
 
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
       </div>
