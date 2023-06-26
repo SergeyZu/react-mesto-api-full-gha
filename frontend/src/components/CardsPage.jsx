@@ -63,15 +63,20 @@ function CardsPage({ logOut, email }) {
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((i) => i === currentUser._id);
+
+    console.log(currentUser);
+    console.log(card.likes);
+    console.log(isLiked);
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     const setLike = () =>
       api
         .setLike(card._id, !isLiked)
         .then((newCard) => {
-          setCards((state) =>
-            state.map((c) => (c._id === card._id ? newCard : c))
+          setCards(
+            (state) => state.map((c) => (c._id === card._id ? newCard : c))
+            // state.map((c) => (c._id === card._id ? newCard : c))
           );
         })
         .catch((err) => {
