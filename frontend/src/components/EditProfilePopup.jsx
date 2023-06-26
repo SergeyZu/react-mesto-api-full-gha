@@ -8,27 +8,11 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
     name: '',
     description: '',
   });
-  console.log(form);
-  // const [name, setName] = useState('');
-  // const [description, setDescription] = useState('');
+  // console.log(form);
 
   // Подписка на контекст
   const currentUser = useContext(CurrentUserContext);
 
-  // function handleNameChange(evt) {
-  //   setName(evt.target.value);
-  // }
-
-  // function handleDescriptionChange(evt) {
-  //   setDescription(evt.target.value);
-  // }
-
-  // После загрузки текущего пользователя из API
-  // его данные будут использованы в управляемых компонентах.
-  // useEffect(() => {
-  //   setName(currentUser.name);
-  //   setDescription(currentUser.about);
-  // }, [currentUser, isOpen]);
   useEffect(() => {
     setForm({
       name: currentUser.name,
@@ -52,42 +36,42 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       <PopupWithForm
         isOpen={isOpen}
         onClose={onClose}
-        name="profile"
-        title="Редактировать профиль"
-        btnText="Сохранить"
+        name='profile'
+        title='Редактировать профиль'
+        btnText='Сохранить'
         onSubmit={handleSubmit}
       >
-        <div className="popup__field">
+        <div className='popup__field'>
           <input
-            placeholder="Имя"
-            id="name-input"
-            className="popup__input popup__input_type_name"
-            name="name"
-            type="text"
+            placeholder='Имя'
+            id='name-input'
+            className='popup__input popup__input_type_name'
+            name='name'
+            type='text'
             value={form.name || ''}
             onChange={handleChange}
-            minLength="2"
-            maxLength="40"
+            minLength='2'
+            maxLength='40'
             required
           />
-          <span className="popup__form-error_active name-input-error">
+          <span className='popup__form-error_active name-input-error'>
             {errors.name}
           </span>
         </div>
-        <div className="popup__field">
+        <div className='popup__field'>
           <input
-            placeholder="Занятие"
-            id="about-input"
-            className="popup__input popup__input_type_about"
-            name="description"
-            type="text"
+            placeholder='Занятие'
+            id='about-input'
+            className='popup__input popup__input_type_about'
+            name='description'
+            type='text'
             value={form.description || ''}
             onChange={handleChange}
-            minLength="2"
-            maxLength="200"
+            minLength='2'
+            maxLength='200'
             required
           />
-          <span className="popup__form-error_active about-input-error">
+          <span className='popup__form-error_active about-input-error'>
             {errors.description}
           </span>
         </div>

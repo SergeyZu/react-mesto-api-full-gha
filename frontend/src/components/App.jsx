@@ -44,7 +44,7 @@ function App() {
         setUserData(user);
         setIsLoggedIn(true);
         navigate('/cards');
-        setEmail(user.data.email);
+        setEmail(user.email);
       })
       .catch((err) => {
         console.log(err);
@@ -109,17 +109,17 @@ function App() {
     <>
       <Routes>
         <Route
-          path="/"
+          path='/'
           element={
             !isLoggedIn ? (
-              <Navigate to="/sign-in" replace />
+              <Navigate to='/sign-in' replace />
             ) : (
-              <Navigate to="/cards" replace />
+              <Navigate to='/cards' replace />
             )
           }
         />
         <Route
-          path="/cards"
+          path='/cards'
           element={
             <ProtectedRoute
               component={CardsPage}
@@ -131,17 +131,17 @@ function App() {
           }
         />
         <Route
-          path="/sign-up"
+          path='/sign-up'
           element={
-            <div className="registerContainer">
+            <div className='registerContainer'>
               <Register registerUser={registerUser} />
             </div>
           }
         />
         <Route
-          path="/sign-in"
+          path='/sign-in'
           element={
-            <div className="loginContainer">
+            <div className='loginContainer'>
               <Login loginUser={loginUser} />
             </div>
           }
