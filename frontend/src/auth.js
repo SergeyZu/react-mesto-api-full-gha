@@ -2,7 +2,9 @@
 
 // const BASE_URL = 'https://auth.nomoreparties.co';
 
-const BASE_URL = 'http://localhost:3000';
+// const BASE_URL = 'http://localhost:3000';
+
+const BASE_URL = 'https://api.zinchenko.nomoredomains.rocks';
 
 const makeRequest = (url, method, body, token) => {
   const options = {
