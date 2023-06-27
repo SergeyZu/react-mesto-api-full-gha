@@ -10,7 +10,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.5.160
+IP 158.160.5.160
 
 Frontend https://zinchenko.nomoredomains.rocks
 
