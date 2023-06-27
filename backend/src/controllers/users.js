@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const NotFoundError = require('../errors/NotFoundError');
 const userModel = require('../models/user');
 
-const SECRET_KEY = 'abra-shvabra-kadabra';
+const { NODE_ENV, SECRET_KEY } = process.env;
 
 const getUsers = (req, res, next) => {
   userModel
@@ -69,9 +69,13 @@ const loginUser = (req, res, next) => {
   return userModel
     .findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, SECRET_KEY, {
-        expiresIn: '7d',
-      });
+      const token = jwt.sign(
+        { _id: user._id },
+        NODE_ENV === 'production' ? SECRET_KEY : 'dev-secret',
+        {
+          expiresIn: '7d',
+        }
+      );
       res.status(200).send({ token });
     })
     .catch(next);
