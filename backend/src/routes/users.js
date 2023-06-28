@@ -9,7 +9,7 @@ const {
 
 router.get('/', usersController.getUsers);
 
-router.get('/me', usersController.getUserData);
+router.get('/me', validateUserId, usersController.getUserData);
 
 router.get('/:user_id', validateUserId, usersController.getUserById);
 

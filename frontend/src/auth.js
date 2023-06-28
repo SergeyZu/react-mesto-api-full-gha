@@ -18,8 +18,6 @@ const makeRequest = (url, method, body, token) => {
     options.body = JSON.stringify(body);
   }
 
-  // const token = localStorage.getItem('token');
-
   if (token) {
     options.headers.Authorization = `Bearer ${token}`;
   }
