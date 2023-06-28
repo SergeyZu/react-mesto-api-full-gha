@@ -32,7 +32,7 @@ function App() {
     if (!token) {
       setIsLoading(false);
     }
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     if (!token) {
