@@ -1,4 +1,4 @@
-/* eslint-disable operator-linebreak */
+/* eslint-disable comma-dangle */
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
   },
   avatar: {
     type: String,
+    validate: {
+      validator: (avatar) => validator.isURL(avatar),
+      message: 'Введите корректную ссылку',
+    },
     default:
       'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
   },

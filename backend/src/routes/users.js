@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 const router = require('express').Router();
 const usersController = require('../controllers/users');
 const {
@@ -8,7 +9,7 @@ const {
 
 router.get('/', usersController.getUsers);
 
-router.get('/me', validateUserId, usersController.getUserData);
+router.get('/me', usersController.getUserData);
 
 router.get('/:user_id', validateUserId, usersController.getUserById);
 

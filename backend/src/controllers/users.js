@@ -1,7 +1,11 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable comma-dangle */
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const NotFoundError = require('../errors/NotFoundError');
+const BadRequestError = require('../errors/BadRequestError');
 const userModel = require('../models/user');
+const ConflictError = require('../errors/ConflictError');
 
 const { NODE_ENV, SECRET_KEY } = process.env;
 
@@ -9,7 +13,7 @@ const getUsers = (req, res, next) => {
   userModel
     .find({})
     .then((users) => {
-      res.status(200).send(users);
+      res.send(users);
     })
     .catch(next);
 };
@@ -21,7 +25,7 @@ const getUserById = (req, res, next) => {
       throw new NotFoundError('Пользователь не найден');
     })
     .then((user) => {
-      res.status(200).send(user);
+      res.send(user);
     })
     .catch(next);
 };
@@ -33,7 +37,7 @@ const getUserData = (req, res, next) => {
       throw new NotFoundError('Пользователь не найден');
     })
     .then((user) => {
-      res.status(200).send(user);
+      res.send(user);
     })
     .catch(next);
 };
@@ -59,7 +63,21 @@ const createUser = (req, res, next) => {
           _id: user._id,
         });
       })
-      .catch(next);
+      .catch((err) => {
+        if (err.code === 11000) {
+          next(
+            new ConflictError('Пользователь с таким email уже зарегистрирован')
+          );
+        } else if (err.name === 'ValidationError') {
+          next(
+            new BadRequestError(
+              'Некорректные данные при регистрации пользователя'
+            )
+          );
+        } else {
+          next(err);
+        }
+      });
   });
 };
 
@@ -76,7 +94,7 @@ const loginUser = (req, res, next) => {
           expiresIn: '7d',
         }
       );
-      res.status(200).send({ token });
+      res.send({ token });
     })
     .catch(next);
 };
@@ -89,9 +107,15 @@ const updateUser = (req, res, next) => {
       { new: true, runValidators: true }
     )
     .then((user) => {
-      res.status(200).send(user);
+      res.send(user);
     })
-    .catch(next);
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        next(new BadRequestError('Введены некорректные данные пользователя'));
+      } else {
+        next(err);
+      }
+    });
 };
 
 const updateUserAvatar = (req, res, next) => {
@@ -104,7 +128,13 @@ const updateUserAvatar = (req, res, next) => {
     .then((user) => {
       res.send(user);
     })
-    .catch(next);
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        next(new BadRequestError('Введены некорректные данные'));
+      } else {
+        next(err);
+      }
+    });
 };
 
 module.exports = {

@@ -1,12 +1,14 @@
+/* eslint-disable comma-dangle */
 const NotFoundError = require('../errors/NotFoundError');
 const ForbiddenError = require('../errors/ForbiddenError');
+const BadRequestError = require('../errors/BadRequestError');
 const cardModel = require('../models/card');
 
 const getCards = (req, res, next) => {
   cardModel
     .find({})
     .then((cards) => {
-      res.status(200).send(cards);
+      res.send(cards);
     })
     .catch(next);
 };
@@ -17,7 +19,13 @@ const createCard = (req, res, next) => {
     .then((card) => {
       res.status(201).send(card);
     })
-    .catch(next);
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        next(new BadRequestError('Некорректные данные при создании карточки'));
+      } else {
+        next(err);
+      }
+    });
 };
 
 const deleteCard = (req, res, next) => {
@@ -30,9 +38,9 @@ const deleteCard = (req, res, next) => {
       if (`${card.owner}` !== req.user._id) {
         throw new ForbiddenError('Вы не можете удалять чужие карточки');
       }
-      return cardModel
+      return card
         .deleteOne()
-        .then(() => res.status(200).send({ message: 'Карточка удалена' }));
+        .then(() => res.send({ message: 'Карточка удалена' }));
     })
     .catch(next);
 };
