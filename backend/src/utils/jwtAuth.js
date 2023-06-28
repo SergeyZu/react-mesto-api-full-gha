@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 const jwt = require('jsonwebtoken');
 
 const SECRET_KEY = 'abra-shvabra-kadabra';
