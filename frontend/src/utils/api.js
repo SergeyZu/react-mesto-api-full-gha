@@ -15,6 +15,10 @@ class Api {
     return fetch(url, options).then(this._handleResponse);
   }
 
+  setToken(token) {
+    this._headers.Authorization = `Bearer ${token}`;
+  }
+
   // Запрос на получение данных пользователя
   getUserData() {
     return this._request(`${this._baseUrl}/users/me`, {
@@ -90,7 +94,7 @@ const apiConfig = {
   // baseUrl: 'http://localhost:3000',
   baseUrl: 'https://api.zinchenko.nomoredomains.rocks',
   headers: {
-    authorization: `Bearer ${localStorage.getItem('token')}`,
+    // authorization: `Bearer ${localStorage.getItem('token')}`,
     'Content-Type': 'application/json',
   },
 };

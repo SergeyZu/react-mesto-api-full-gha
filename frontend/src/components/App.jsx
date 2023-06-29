@@ -9,6 +9,7 @@ import InfoTooltip from './InfoTooltip';
 import success from '../images/success.svg';
 import fail from '../images/fail.svg';
 import Loader from './Loader';
+import { api } from '../utils/api';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -43,6 +44,7 @@ function App() {
       .then((user) => {
         setUserData(user);
         setIsLoggedIn(true);
+        api.setToken(token);
         navigate('/cards');
         setEmail(user.email);
       })
