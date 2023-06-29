@@ -5,11 +5,19 @@ const UnauthorizedError = require('../errors/UnauthorizedError');
 const { NODE_ENV, SECRET_KEY } = process.env;
 
 const auth = (req, res, next) => {
-  const token = req.headers.authorization.replace('Bearer ', '');
+  const { authorization } = req.headers;
 
-  if (!token) {
+  if (!authorization || !authorization.startsWith('Bearer ')) {
     return next(new UnauthorizedError('Пользователь не авторизован'));
   }
+
+  const token = authorization.replace('Bearer ', '');
+
+  // const token = req.headers.authorization.replace('Bearer ', '');
+
+  // if (!token) {
+  //   return next(new UnauthorizedError('Пользователь не авторизован'));
+  // }
 
   let payload;
 
