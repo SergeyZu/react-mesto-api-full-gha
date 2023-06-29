@@ -91,8 +91,8 @@ class Api {
 }
 
 const apiConfig = {
-  // baseUrl: 'http://localhost:3000',
-  baseUrl: 'https://api.zinchenko.nomoredomains.rocks',
+  baseUrl: 'http://localhost:3000',
+  // baseUrl: 'https://api.zinchenko.nomoredomains.rocks',
   headers: {
     // authorization: `Bearer ${localStorage.getItem('token')}`,
     'Content-Type': 'application/json',
