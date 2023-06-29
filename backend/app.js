@@ -37,11 +37,11 @@ app.use(requestLogger);
 
 app.use(limiter);
 
-app.get('/crash-test', (req, res, next) => {
-  setTimeout(() => {
-    next(new Error('Сервер сейчас упадёт'));
-  }, 0);
-});
+// app.get('/crash-test', (req, res, next) => {
+//   setTimeout(() => {
+//     next(new Error('Сервер сейчас упадёт'));
+//   }, 0);
+// });
 
 app.use(router);
 
